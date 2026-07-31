@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 250" width="860" height="250" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif">
+<defs>
+<marker id="a8b949e" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#8b949e"/></marker>
+<marker id="ae8a33d" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#e8a33d"/></marker>
+<marker id="a4fd1c5" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#4fd1c5"/></marker>
+</defs>
+<text x="14" y="24" font-size="14" fill="#e6edf3" text-anchor="start" font-weight="600">Identifying the paragraph that supports a later hop</text>
+<text x="14" y="43" font-size="10.5" fill="#8b949e" text-anchor="start" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">MuSiQue · 500 questions · 9997 candidate paragraphs · same NLI model throughout</text>
+<line x1="250" y1="62" x2="250" y2="196" stroke="#30363d" stroke-dasharray="3 4"/>
+<text x="250" y="212" font-size="9.5" fill="#8b949e" text-anchor="middle" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">0.50</text>
+<text x="760" y="212" font-size="9.5" fill="#8b949e" text-anchor="end" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">0.90</text>
+<text x="236" y="87" font-size="12" fill="#e6edf3" text-anchor="end" font-weight="400">the original question</text>
+<rect x="250" y="76" width="59" height="16" rx="2" fill="#8b949e" opacity="0.85"/>
+<text x="318.65000000000003" y="89" font-size="12" fill="#8b949e" text-anchor="start" font-weight="500" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">0.546</text>
+<text x="844" y="89" font-size="10" fill="#8b949e" text-anchor="end" font-weight="400">chance</text>
+<text x="236" y="119" font-size="12" fill="#e6edf3" text-anchor="end" font-weight="400">Qwen2.5-7B, question only</text>
+<rect x="250" y="108" width="42" height="16" rx="2" fill="#f85149" opacity="0.85"/>
+<text x="302.07500000000005" y="121" font-size="12" fill="#f85149" text-anchor="start" font-weight="500" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">0.533</text>
+<text x="844" y="121" font-size="10" fill="#8b949e" text-anchor="end" font-weight="400">below baseline</text>
+<text x="236" y="151" font-size="12" fill="#e6edf3" text-anchor="end" font-weight="400">Qwen2.5-7B, anchored on top-1 chunk</text>
+<rect x="250" y="140" width="175" height="16" rx="2" fill="#e8a33d" opacity="0.85"/>
+<text x="434.675" y="153" font-size="12" fill="#e8a33d" text-anchor="start" font-weight="500" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">0.637</text>
+<text x="844" y="153" font-size="10" fill="#8b949e" text-anchor="end" font-weight="400">31% of ceiling</text>
+<text x="236" y="183" font-size="12" fill="#e6edf3" text-anchor="end" font-weight="400">the gold sub-question</text>
+<rect x="250" y="172" width="433" height="16" rx="2" fill="#4fd1c5" opacity="0.85"/>
+<text x="693.5" y="185" font-size="12" fill="#4fd1c5" text-anchor="start" font-weight="500" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">0.840</text>
+<text x="844" y="185" font-size="10" fill="#8b949e" text-anchor="end" font-weight="400">ceiling</text>
+<line x1="14" y1="226" x2="846" y2="226" stroke="#30363d"/>
+<text x="14" y="244" font-size="11.5" fill="#8b949e" text-anchor="start" font-weight="400">Paired lift, gold vs original: +0.355 [0.331, 0.382]. Hop count then stops mattering: 0.848, 0.849, 0.804 at two, three and four hops.</text>
+</svg>

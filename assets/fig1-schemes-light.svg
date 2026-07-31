@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 300" width="860" height="300" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif">
+<defs>
+<marker id="a656d76" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#656d76"/></marker>
+<marker id="abf8700" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#bf8700"/></marker>
+<marker id="a0f7f74" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#0f7f74"/></marker>
+</defs>
+<rect x="12" y="8" width="262" height="284" rx="6" fill="none" stroke="#d1d9e0" stroke-width="1"/>
+<text x="30" y="34" font-size="15" fill="#1f2328" text-anchor="start" font-weight="600">Per-chunk</text>
+<text x="30" y="52" font-size="11.5" fill="#656d76" text-anchor="start" font-weight="400">premise = one paragraph</text>
+<text x="256" y="34" font-size="10.5" fill="#cf222e" text-anchor="end" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">k calls</text>
+<rect x="30" y="74" width="60" height="22" rx="3" fill="#eaeef2" stroke="#0f7f74" stroke-width="1"/>
+<text x="60" y="89" font-size="11" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">c₁</text>
+<text x="96" y="89" font-size="9.5" fill="#0f7f74" text-anchor="start" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">gold</text>
+<rect x="30" y="104" width="60" height="22" rx="3" fill="#eaeef2" stroke="#0f7f74" stroke-width="1"/>
+<text x="60" y="119" font-size="11" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">c₂</text>
+<text x="96" y="119" font-size="9.5" fill="#0f7f74" text-anchor="start" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">gold</text>
+<rect x="30" y="134" width="60" height="22" rx="3" fill="none" stroke="#d1d9e0" stroke-width="1"/>
+<text x="60" y="149" font-size="11" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">c₃</text>
+<rect x="30" y="164" width="60" height="22" rx="3" fill="none" stroke="#d1d9e0" stroke-width="1"/>
+<text x="60" y="179" font-size="11" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">c₄</text>
+<rect x="162" y="96" width="96" height="56" rx="4" fill="#f6f8fa" stroke="#cf222e" stroke-width="1"/>
+<text x="210" y="120" font-size="11.5" fill="#1f2328" text-anchor="middle" font-weight="400">score</text>
+<text x="210" y="136" font-size="10" fill="#656d76" text-anchor="middle" font-weight="400">each chunk</text>
+<line x1="94" y1="85" x2="158" y2="124" stroke="#656d76" stroke-width="1.5" marker-end="url(#a656d76)"/>
+<line x1="94" y1="115" x2="158" y2="124" stroke="#656d76" stroke-width="1.5" marker-end="url(#a656d76)"/>
+<line x1="94" y1="145" x2="158" y2="124" stroke="#656d76" stroke-width="1.5" marker-end="url(#a656d76)"/>
+<line x1="94" y1="175" x2="158" y2="124" stroke="#656d76" stroke-width="1.5" marker-end="url(#a656d76)"/>
+<text x="30" y="216" font-size="10.5" fill="#cf222e" text-anchor="start" font-weight="400">c₂ alone does not entail</text>
+<text x="30" y="231" font-size="10.5" fill="#cf222e" text-anchor="start" font-weight="400">the answer</text>
+<line x1="30" y1="238" x2="256" y2="238" stroke="#d1d9e0"/>
+<text x="30" y="260" font-size="10" fill="#656d76" text-anchor="start" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">MuSiQue EM</text>
+<text x="256" y="262" font-size="17" fill="#cf222e" text-anchor="end" font-weight="500" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">9.7</text>
+<text x="256" y="278" font-size="9.5" fill="#656d76" text-anchor="end" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">no filter: 20.9</text>
+<rect x="297" y="8" width="262" height="284" rx="6" fill="none" stroke="#d1d9e0" stroke-width="1"/>
+<text x="315" y="34" font-size="15" fill="#1f2328" text-anchor="start" font-weight="600">Set-level</text>
+<text x="315" y="52" font-size="11.5" fill="#656d76" text-anchor="start" font-weight="400">premise = every pair</text>
+<text x="541" y="34" font-size="10.5" fill="#bf8700" text-anchor="end" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">C(k,2) calls</text>
+<rect x="315" y="74" width="60" height="22" rx="3" fill="#eaeef2" stroke="#0f7f74" stroke-width="1"/>
+<text x="345" y="89" font-size="11" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">c₁</text>
+<text x="381" y="89" font-size="9.5" fill="#0f7f74" text-anchor="start" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">gold</text>
+<rect x="315" y="104" width="60" height="22" rx="3" fill="#eaeef2" stroke="#0f7f74" stroke-width="1"/>
+<text x="345" y="119" font-size="11" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">c₂</text>
+<text x="381" y="119" font-size="9.5" fill="#0f7f74" text-anchor="start" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">gold</text>
+<rect x="315" y="134" width="60" height="22" rx="3" fill="none" stroke="#d1d9e0" stroke-width="1"/>
+<text x="345" y="149" font-size="11" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">c₃</text>
+<rect x="315" y="164" width="60" height="22" rx="3" fill="none" stroke="#d1d9e0" stroke-width="1"/>
+<text x="345" y="179" font-size="11" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">c₄</text>
+<rect x="447" y="96" width="96" height="56" rx="4" fill="#f6f8fa" stroke="#bf8700" stroke-width="1"/>
+<text x="495" y="120" font-size="11.5" fill="#1f2328" text-anchor="middle" font-weight="400">score</text>
+<text x="495" y="136" font-size="10" fill="#656d76" text-anchor="middle" font-weight="400">all pairs</text>
+<rect x="311" y="70" width="70" height="126" rx="4" fill="none" stroke="#bf8700" stroke-width="1" stroke-dasharray="3 3"/>
+<line x1="385" y1="133" x2="443" y2="124" stroke="#bf8700" stroke-width="1.5" marker-end="url(#abf8700)"/>
+<text x="315" y="216" font-size="10.5" fill="#bf8700" text-anchor="start" font-weight="400">argmax lands correctly</text>
+<text x="315" y="231" font-size="10.5" fill="#bf8700" text-anchor="start" font-weight="400">44% of the time</text>
+<line x1="315" y1="238" x2="541" y2="238" stroke="#d1d9e0"/>
+<text x="315" y="260" font-size="10" fill="#656d76" text-anchor="start" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">MuSiQue EM</text>
+<text x="541" y="262" font-size="17" fill="#bf8700" text-anchor="end" font-weight="500" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">13.5</text>
+<text x="541" y="278" font-size="9.5" fill="#656d76" text-anchor="end" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">no filter: 20.9</text>
+<rect x="582" y="8" width="262" height="284" rx="6" fill="none" stroke="#d1d9e0" stroke-width="1"/>
+<text x="600" y="34" font-size="15" fill="#1f2328" text-anchor="start" font-weight="600">Conditional</text>
+<text x="600" y="52" font-size="11.5" fill="#656d76" text-anchor="start" font-weight="400">anchor, then complete</text>
+<text x="826" y="34" font-size="10.5" fill="#0f7f74" text-anchor="end" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">k−1 calls</text>
+<rect x="600" y="74" width="60" height="22" rx="3" fill="#eaeef2" stroke="#0f7f74" stroke-width="1"/>
+<text x="630" y="89" font-size="11" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">c₁</text>
+<text x="666" y="89" font-size="9.5" fill="#0f7f74" text-anchor="start" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">gold</text>
+<rect x="600" y="104" width="60" height="22" rx="3" fill="#eaeef2" stroke="#0f7f74" stroke-width="1"/>
+<text x="630" y="119" font-size="11" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">c₂</text>
+<text x="666" y="119" font-size="9.5" fill="#0f7f74" text-anchor="start" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">gold</text>
+<rect x="600" y="134" width="60" height="22" rx="3" fill="none" stroke="#d1d9e0" stroke-width="1"/>
+<text x="630" y="149" font-size="11" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">c₃</text>
+<rect x="600" y="164" width="60" height="22" rx="3" fill="none" stroke="#d1d9e0" stroke-width="1"/>
+<text x="630" y="179" font-size="11" fill="#1f2328" text-anchor="middle" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">c₄</text>
+<rect x="732" y="96" width="96" height="56" rx="4" fill="#f6f8fa" stroke="#0f7f74" stroke-width="1"/>
+<text x="780" y="118" font-size="11.5" fill="#1f2328" text-anchor="middle" font-weight="400">score</text>
+<text x="780" y="134" font-size="10" fill="#656d76" text-anchor="middle" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">c₁ ⊕ cⱼ</text>
+<line x1="664" y1="85" x2="780" y2="92" stroke="#0f7f74" stroke-width="1.5" marker-end="url(#a0f7f74)"/>
+<line x1="664" y1="115" x2="728" y2="130" stroke="#656d76" stroke-width="1.5" marker-end="url(#a656d76)"/>
+<line x1="664" y1="145" x2="728" y2="130" stroke="#656d76" stroke-width="1.5" marker-end="url(#a656d76)"/>
+<line x1="664" y1="175" x2="728" y2="130" stroke="#656d76" stroke-width="1.5" marker-end="url(#a656d76)"/>
+<text x="600" y="216" font-size="10.5" fill="#0f7f74" text-anchor="start" font-weight="400">recall 0.755 vs 0.683</text>
+<text x="600" y="231" font-size="10.5" fill="#0f7f74" text-anchor="start" font-weight="400">at 40% of the cost</text>
+<line x1="600" y1="238" x2="826" y2="238" stroke="#d1d9e0"/>
+<text x="600" y="260" font-size="10" fill="#656d76" text-anchor="start" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">MuSiQue EM</text>
+<text x="826" y="262" font-size="17" fill="#0f7f74" text-anchor="end" font-weight="500" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">14.3</text>
+<text x="826" y="278" font-size="9.5" fill="#656d76" text-anchor="end" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">no filter: 20.9</text>
+</svg>

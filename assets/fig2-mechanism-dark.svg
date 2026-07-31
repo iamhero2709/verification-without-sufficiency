@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 300" width="860" height="300" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif">
+<defs>
+<marker id="a8b949e" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#8b949e"/></marker>
+<marker id="ae8a33d" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#e8a33d"/></marker>
+<marker id="a4fd1c5" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#4fd1c5"/></marker>
+</defs>
+<text x="14" y="26" font-size="14.5" fill="#e6edf3" text-anchor="start" font-weight="400">What government position was held by the woman who portrayed Corliss Archer in Kiss and Tell?</text>
+<text x="14" y="46" font-size="10.5" fill="#8b949e" text-anchor="start" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">HotpotQA · bridge · 543 questions</text>
+<rect x="14" y="62" width="402" height="196" rx="6" fill="none" stroke="#30363d" stroke-width="1"/>
+<text x="32" y="86" font-size="9.5" fill="#e8a33d" text-anchor="start" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">NAMED IN THE QUESTION</text>
+<text x="32" y="108" font-size="14" fill="#e6edf3" text-anchor="start" font-weight="600">Kiss and Tell (1945 film)</text>
+<text x="32" y="140" font-size="11.5" fill="#8b949e" text-anchor="start" font-weight="400">embedding</text>
+<rect x="124" y="127" width="210" height="13" rx="2" fill="#21262d"/>
+<rect x="124" y="127" width="187" height="13" rx="2" fill="#e8a33d" opacity="0.85"/>
+<text x="400" y="139" font-size="12" fill="#e6edf3" text-anchor="end" font-weight="500" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">0.927</text>
+<text x="32" y="176" font-size="11.5" fill="#8b949e" text-anchor="start" font-weight="400">entailment</text>
+<rect x="124" y="163" width="210" height="13" rx="2" fill="#21262d"/>
+<rect x="124" y="163" width="85" height="13" rx="2" fill="#e8a33d" opacity="0.85"/>
+<text x="400" y="175" font-size="12" fill="#e6edf3" text-anchor="end" font-weight="500" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">0.695</text>
+<text x="32" y="212" font-size="11.5" fill="#8b949e" text-anchor="start" font-weight="400">structural</text>
+<rect x="124" y="199" width="210" height="13" rx="2" fill="#21262d"/>
+<rect x="124" y="199" width="86" height="13" rx="2" fill="#e8a33d" opacity="0.85"/>
+<text x="400" y="211" font-size="12" fill="#e6edf3" text-anchor="end" font-weight="500" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">0.696</text>
+<rect x="444" y="62" width="402" height="196" rx="6" fill="none" stroke="#4fd1c5" stroke-width="1"/>
+<text x="462" y="86" font-size="9.5" fill="#4fd1c5" text-anchor="start" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">HOLDS THE ANSWER</text>
+<text x="462" y="108" font-size="14" fill="#e6edf3" text-anchor="start" font-weight="600">Shirley Temple</text>
+<text x="462" y="140" font-size="11.5" fill="#8b949e" text-anchor="start" font-weight="400">embedding</text>
+<rect x="554" y="127" width="210" height="13" rx="2" fill="#21262d"/>
+<rect x="554" y="127" width="130" height="13" rx="2" fill="#e8a33d" opacity="0.85"/>
+<text x="830" y="139" font-size="12" fill="#e6edf3" text-anchor="end" font-weight="500" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">0.796</text>
+<text x="462" y="176" font-size="11.5" fill="#8b949e" text-anchor="start" font-weight="400">entailment</text>
+<rect x="554" y="163" width="210" height="13" rx="2" fill="#21262d"/>
+<rect x="554" y="163" width="46" height="13" rx="2" fill="#e8a33d" opacity="0.85"/>
+<text x="830" y="175" font-size="12" fill="#e6edf3" text-anchor="end" font-weight="500" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">0.605</text>
+<text x="462" y="212" font-size="11.5" fill="#8b949e" text-anchor="start" font-weight="400">structural</text>
+<rect x="554" y="199" width="210" height="13" rx="2" fill="#21262d"/>
+<rect x="554" y="199" width="26" height="13" rx="2" fill="#e8a33d" opacity="0.85"/>
+<text x="830" y="211" font-size="12" fill="#e6edf3" text-anchor="end" font-weight="500" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">0.560</text>
+<line x1="14" y1="274" x2="846" y2="274" stroke="#30363d"/>
+<text x="14" y="294" font-size="11.5" fill="#8b949e" text-anchor="start" font-weight="400">Every signal is more confident about the paragraph the question already names. The deficit is +0.131 for embedding, and it vanishes on comparison questions.</text>
+</svg>

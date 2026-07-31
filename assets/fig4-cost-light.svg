@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 280" width="860" height="280" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif">
+<defs>
+<marker id="a656d76" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#656d76"/></marker>
+<marker id="abf8700" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#bf8700"/></marker>
+<marker id="a0f7f74" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#0f7f74"/></marker>
+</defs>
+<text x="14" y="24" font-size="13.5" fill="#1f2328" text-anchor="start" font-weight="600">Entailment separates gold from distractors</text>
+<text x="14" y="42" font-size="10.5" fill="#656d76" text-anchor="start" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">AUC, deployable hypothesis</text>
+<text x="14" y="79" font-size="11.5" fill="#1f2328" text-anchor="start" font-weight="400">SQuAD</text>
+<rect x="90" y="66" width="230" height="16" rx="2" fill="#eaeef2"/>
+<rect x="90" y="66" width="216" height="16" rx="2" fill="#0f7f74" opacity="0.85"/>
+<text x="330" y="79" font-size="12" fill="#0f7f74" text-anchor="start" font-weight="500" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">0.951</text>
+<text x="14" y="113" font-size="11.5" fill="#1f2328" text-anchor="start" font-weight="400">HotpotQA</text>
+<rect x="90" y="100" width="230" height="16" rx="2" fill="#eaeef2"/>
+<rect x="90" y="100" width="69" height="16" rx="2" fill="#cf222e" opacity="0.85"/>
+<text x="330" y="113" font-size="12" fill="#cf222e" text-anchor="start" font-weight="500" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">0.643</text>
+<text x="14" y="147" font-size="11.5" fill="#1f2328" text-anchor="start" font-weight="400">MuSiQue</text>
+<rect x="90" y="134" width="230" height="16" rx="2" fill="#eaeef2"/>
+<rect x="90" y="134" width="29" height="16" rx="2" fill="#cf222e" opacity="0.85"/>
+<text x="330" y="147" font-size="12" fill="#cf222e" text-anchor="start" font-weight="500" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">0.560</text>
+<text x="14" y="181" font-size="11.5" fill="#1f2328" text-anchor="start" font-weight="400">2Wiki</text>
+<rect x="90" y="168" width="230" height="16" rx="2" fill="#eaeef2"/>
+<rect x="90" y="168" width="11" height="16" rx="2" fill="#cf222e" opacity="0.85"/>
+<text x="330" y="181" font-size="12" fill="#cf222e" text-anchor="start" font-weight="500" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">0.523</text>
+<text x="14" y="214" font-size="10" fill="#0f7f74" text-anchor="start" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">single-hop</text>
+<text x="14" y="230" font-size="10" fill="#cf222e" text-anchor="start" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">multi-hop</text>
+<line x1="416" y1="8" x2="416" y2="252" stroke="#d1d9e0"/>
+<text x="440" y="24" font-size="13.5" fill="#1f2328" text-anchor="start" font-weight="600">The penalty grows with capability</text>
+<text x="440" y="42" font-size="10.5" fill="#656d76" text-anchor="start" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">HotpotQA, Exact Match difference</text>
+<line x1="440" y1="135.0" x2="820" y2="135.0" stroke="#d1d9e0"/>
+<text x="500" y="222" font-size="11" fill="#656d76" text-anchor="middle" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">0.5B</text>
+<text x="630" y="222" font-size="11" fill="#656d76" text-anchor="middle" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">1.5B</text>
+<text x="760" y="222" font-size="11" fill="#656d76" text-anchor="middle" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">3B</text>
+<circle cx="500" cy="149.9" r="4" fill="#cf222e"/>
+<text x="500" y="169.95" font-size="11" fill="#cf222e" text-anchor="middle" font-weight="500" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">-4.6</text>
+<circle cx="630" cy="181.2" r="4" fill="#cf222e"/>
+<text x="630" y="201.15" font-size="11" fill="#cf222e" text-anchor="middle" font-weight="500" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">-14.2</text>
+<circle cx="760" cy="198.1" r="4" fill="#cf222e"/>
+<text x="760" y="218.05" font-size="11" fill="#cf222e" text-anchor="middle" font-weight="500" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">-19.4</text>
+<polyline points="500,149.9 630,181.2 760,198.1" fill="none" stroke="#cf222e" stroke-width="2"/>
+<circle cx="500" cy="136.9" r="4" fill="#0f7f74"/>
+<text x="500" y="156.95" font-size="11" fill="#0f7f74" text-anchor="middle" font-weight="500" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">-0.6</text>
+<circle cx="630" cy="111.6" r="4" fill="#0f7f74"/>
+<text x="630" y="100.6" font-size="11" fill="#0f7f74" text-anchor="middle" font-weight="500" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">+7.2</text>
+<circle cx="760" cy="100.5" r="4" fill="#0f7f74"/>
+<text x="760" y="89.55" font-size="11" fill="#0f7f74" text-anchor="middle" font-weight="500" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">+10.6</text>
+<polyline points="500,136.9 630,111.6 760,100.5" fill="none" stroke="#0f7f74" stroke-width="2"/>
+<text x="440" y="236" font-size="10.5" fill="#cf222e" text-anchor="start" font-weight="400">●  per-chunk gating vs no filtering</text>
+<text x="440" y="252" font-size="10.5" fill="#0f7f74" text-anchor="start" font-weight="400">●  oracle vs best deployable selector</text>
+</svg>
