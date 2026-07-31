@@ -25,6 +25,11 @@ answer is the one the question does not name. A verifier conditioned on the
 question is therefore strongest on the evidence already in hand and weakest on
 the evidence being sought.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/fig2-mechanism-dark.svg">
+  <img alt="Every verification signal scores the paragraph named in the question higher than the paragraph containing the answer" src="assets/fig2-mechanism-light.svg" width="100%">
+</picture>
+
 ## Results at a glance
 
 Separating gold evidence from hard distractors, AUC:
@@ -37,6 +42,11 @@ Separating gold evidence from hard distractors, AUC:
 
 Entailment works on single-hop and fails on multi-hop. Everything below explains
 that one row.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/fig4-cost-dark.svg">
+  <img alt="Entailment reaches 0.951 AUC on single-hop SQuAD and 0.523 to 0.643 on multi-hop; the per-chunk gating penalty grows from 4.6 to 19.4 Exact Match as the generator scales" src="assets/fig4-cost-light.svg" width="100%">
+</picture>
 
 **Where the signals point.** On HotpotQA bridge questions, embedding similarity
 separates the paragraph *named in the question* from distractors at 0.941, and
@@ -56,6 +66,11 @@ every cell, and the penalty grows with generator capability.
 **What repairs it.** Conditioning the hypothesis on the decomposed sub-question
 instead of the original query:
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/fig3-repair-dark.svg">
+  <img alt="Entailment AUC rises from 0.546 with the original question to 0.840 with the gold sub-question; an off-the-shelf decomposer reaches 0.637" src="assets/fig3-repair-light.svg" width="100%">
+</picture>
+
 | Hypothesis built from | AUC [95% CI] | % of ceiling |
 |:--|:--:|:--:|
 | the original question | 0.546 [0.523, 0.569] | 0% |
@@ -68,6 +83,23 @@ mattering: 0.848, 0.849 and 0.804 at two, three and four hops.
 
 Iterative retrieval systems already produce these decompositions, for retrieval,
 and discard them before verifying.
+
+## Three ways to score evidence
+
+The three schemes differ only in what counts as a premise. Per-chunk scoring
+asks whether one paragraph entails the answer, which for a second hop it cannot.
+Set-level scoring restores sufficiency but searches blindly. Conditional
+selection anchors on the paragraph the embedding signal identifies reliably,
+then asks which paragraph completes it.
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/fig1-schemes-dark.svg">
+  <img alt="Three verification schemes: per-chunk with k calls, set-level with C(k,2) calls, and conditional anchoring with k-1 calls" src="assets/fig1-schemes-light.svg" width="100%">
+</picture>
+
+Algorithm 1 in the paper gives the conditional selector. It costs `k-1`
+cross-encoder calls against `C(k,2)` for blind pair search, and recovers 7 to 15
+points of gold recall. It still does not beat leaving retrieval alone.
 
 ## Seven controls
 
@@ -117,6 +149,8 @@ results/
 traces/         per-question JSONL for every configuration
 tests/          the core test suite
 docs/           the project page
+assets/         README diagrams, light and dark
+scripts/        figure generation
 ```
 
 Every number in the paper is produced by a script reading `results/analysis/`.
@@ -140,6 +174,17 @@ produce and they are the part most papers leave out.
   30–40% Exact Match at 0.5B. The 500-question measurement puts the true value
   near 10%. [ANALYSIS_NOTES.md](ANALYSIS_NOTES.md) records what was decided
   when, and does not pretend a pre-registration existed.
+
+## Figures
+
+The README diagrams are generated, not drawn:
+
+```bash
+python scripts/make_readme_figures.py     # writes assets/*.svg
+```
+
+Light and dark variants come from one spec, so they cannot drift apart. Every
+number in them is copied from `results/analysis/`.
 
 ## Citing
 
