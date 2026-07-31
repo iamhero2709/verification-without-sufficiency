@@ -6,10 +6,24 @@
 
 [![Paper](https://img.shields.io/badge/paper-PDF-1a2130?style=flat-square)](paper/final_paper.pdf)
 [![arXiv](https://img.shields.io/badge/arXiv-XXXX.XXXXX-b31b1b?style=flat-square)](https://arxiv.org/abs/XXXX.XXXXX)
-[![Page](https://img.shields.io/badge/project-page-e8a33d?style=flat-square)](https://iamhero2709.github.io/verification-without-sufficiency/)
+[![Project page](https://img.shields.io/badge/project_page-live-ffb545?style=flat-square&logo=github)](https://iamhero2709.github.io/verification-without-sufficiency/)
 [![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE)
 
 Randhir Kumar · Independent Researcher
+
+### [→ Explore the interactive project page](https://iamhero2709.github.io/verification-without-sufficiency/)
+
+<a href="https://iamhero2709.github.io/verification-without-sufficiency/">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/fig5-field-dark.svg">
+    <img alt="The evidence field: ten candidate paragraphs under three conditions, with tile brightness showing how strongly the verifier scores each one" src="assets/fig5-field-light.svg" width="100%">
+  </picture>
+</a>
+
+<sub>Ten candidate paragraphs for one question. Brightness is the class-mean AUC
+against distractors. Under the original question the light lands on the paragraph
+the question already names; under the decomposed sub-question it moves to the one
+holding the answer. <a href="https://iamhero2709.github.io/verification-without-sufficiency/">Switch between the three conditions live.</a></sub>
 
 </div>
 
@@ -175,12 +189,33 @@ produce and they are the part most papers leave out.
   near 10%. [ANALYSIS_NOTES.md](ANALYSIS_NOTES.md) records what was decided
   when, and does not pretend a pre-registration existed.
 
+## Project page
+
+**[https://iamhero2709.github.io/verification-without-sufficiency/](https://iamhero2709.github.io/verification-without-sufficiency/)**
+
+An interactive walkthrough of the result. The evidence field responds to three
+conditions, the charts animate from the same CSVs the paper reads, and the whole
+thing is one self-contained file with no build step and no dependencies.
+
+Serve it locally with:
+
+```bash
+python -m http.server -d docs 8000     # then open http://localhost:8000
+```
+
+To publish: **Settings → Pages → Source: `main` branch, `/docs` folder**. The
+page links to `docs/paper.pdf`, so copy the compiled paper there:
+
+```bash
+cp paper/final_paper.pdf docs/paper.pdf
+```
+
 ## Figures
 
 The README diagrams are generated, not drawn:
 
 ```bash
-python scripts/make_readme_figures.py     # writes assets/*.svg
+python scripts/make_readme_figures.py     # writes assets/*.svg, 5 figures x 2 themes
 ```
 
 Light and dark variants come from one spec, so they cannot drift apart. Every
