@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Verification Without Sufficiency</title>
+<meta name="description" content="Per-chunk filtering fails on multi-hop RAG, and decomposition repairs it. Entailment verification reaches 0.951 AUC on single-hop QA and 0.643 on multi-hop.">
+<meta property="og:title" content="Verification Without Sufficiency">
+<meta property="og:description" content="Per-chunk filtering fails on multi-hop RAG, and decomposition repairs it.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,500;9..144,700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#10141c; --ink2:#1a2130; --ink3:#242d3f;
+  --paper:#eceae4; --paper-dim:#c9c6bd;
+  --signal:#e8a33d; --answer:#4fd1c5; --muted:#7d8798;
+  --rule:#2b3546;
+  --display:'Fraunces',Georgia,serif;
+  --body:'Instrument Sans',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --wide:1140px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--ink);color:var(--paper);
+  font-family:var(--body);font-size:17px;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--wide);margin:0 auto;padding:0 28px}
+a{color:var(--answer);text-decoration:none;border-bottom:1px solid rgba(79,209,197,.3)}
+a:hover{border-bottom-color:var(--answer)}
+:focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:2px}
+
+.eyebrow{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--muted);
+}
+h1{
+  font-family:var(--display);font-variation-settings:'SOFT' 30,'WONK' 1,'opsz' 120;
+  font-weight:300;font-size:clamp(42px,7.4vw,86px);line-height:.98;
+  letter-spacing:-.025em;margin:18px 0 0;
+}
+h1 em{font-style:italic;font-weight:500;color:var(--signal)}
+h2{
+  font-family:var(--display);font-variation-settings:'SOFT' 20,'WONK' 1,'opsz' 60;
+  font-weight:500;font-size:clamp(27px,3.6vw,40px);line-height:1.1;
+  letter-spacing:-.02em;margin:0 0 14px;
+}
+h3{font-family:var(--body);font-weight:600;font-size:17px;margin:0 0 8px}
+p{margin:0 0 18px;max-width:62ch;color:#d6d8dd}
+.lede{font-size:20px;color:var(--paper);max-width:56ch}
+
+/* ---------- hero ---------- */
+header{padding:74px 0 0;border-bottom:1px solid var(--rule)}
+.byline{margin-top:26px;font-size:15px;color:var(--muted)}
+.links{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 54px}
+.btn{
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.04em;
+  padding:9px 16px;border:1px solid var(--rule);border-radius:2px;
+  color:var(--paper);background:transparent;border-bottom:1px solid var(--rule);
+  transition:border-color .18s,color .18s,background .18s;
+}
+.btn:hover{border-color:var(--signal);color:var(--signal)}
+.btn.solid{background:var(--signal);color:var(--ink);border-color:var(--signal);font-weight:500}
+.btn.solid:hover{background:#f0b25a;color:var(--ink)}
+
+/* ---------- signature: the evidence spotlight ---------- */
+.stage{padding:0 0 64px}
+.q{
+  font-family:var(--display);font-variation-settings:'SOFT' 20,'WONK' 1,'opsz' 40;
+  font-size:clamp(19px,2.5vw,26px);line-height:1.35;font-weight:300;
+  max-width:44ch;margin:0 0 6px;
+}
+.qmeta{font-family:var(--mono);font-size:11.5px;color:var(--muted);margin-bottom:26px}
+.controls{display:flex;flex-wrap:wrap;gap:22px;align-items:flex-end;margin-bottom:24px}
+.ctl-label{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--muted);display:block;margin-bottom:7px}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:2px;overflow:hidden}
+.seg button{
+  font-family:var(--mono);font-size:12px;padding:7px 13px;background:transparent;
+  color:var(--muted);border:0;cursor:pointer;transition:background .15s,color .15s;
+}
+.seg button+button{border-left:1px solid var(--rule)}
+.seg button[aria-pressed="true"]{background:var(--ink3);color:var(--paper)}
+.seg button:hover{color:var(--paper)}
+
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.card{
+  position:relative;border:1px solid var(--rule);border-radius:3px;
+  background:var(--ink2);padding:20px 20px 18px;overflow:hidden;
+  transition:border-color .4s;
+}
+.card .glow{
+  position:absolute;inset:0;pointer-events:none;opacity:0;
+  background:radial-gradient(120% 90% at 50% 0%,rgba(232,163,61,.42),rgba(232,163,61,0) 68%);
+  transition:opacity .55s cubic-bezier(.2,.7,.3,1);
+}
+.card .beam{
+  position:absolute;left:0;right:0;top:0;height:3px;background:var(--signal);
+  transform:scaleX(0);transform-origin:50% 50%;
+  transition:transform .55s cubic-bezier(.2,.7,.3,1);
+}
+.card.holds{border-color:rgba(79,209,197,.42)}
+.role{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted);display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:12px;position:relative;
+}
+.holds .role .tag{color:var(--answer)}
+.title{font-weight:600;font-size:16px;margin-bottom:7px;position:relative}
+.snippet{font-size:14.5px;color:#aeb4c0;line-height:1.5;margin:0;position:relative}
+.snippet mark{background:rgba(232,163,61,.2);color:var(--signal);padding:0 2px;border-radius:2px}
+.readout{
+  display:flex;align-items:baseline;gap:9px;margin-top:16px;
+  padding-top:13px;border-top:1px solid var(--rule);position:relative;
+}
+.auc{font-family:var(--mono);font-size:27px;font-weight:500;color:var(--signal);
+  font-variant-numeric:tabular-nums}
+.holds .auc{color:var(--paper)}
+.auc-note{font-family:var(--mono);font-size:10.5px;color:var(--muted);letter-spacing:.06em}
+.verdict{
+  margin-top:22px;padding:14px 17px;border-left:2px solid var(--signal);
+  background:rgba(232,163,61,.06);font-size:15px;color:#dfe1e6;max-width:none;
+}
+.verdict strong{color:var(--signal);font-weight:600}
+.verdict.even{border-left-color:var(--answer);background:rgba(79,209,197,.06)}
+.verdict.even strong{color:var(--answer)}
+
+/* ---------- generic sections ---------- */
+section{padding:76px 0;border-bottom:1px solid var(--rule)}
+.sec-head{display:flex;gap:14px;align-items:baseline;margin-bottom:30px}
+.sec-num{font-family:var(--mono);font-size:11.5px;color:var(--signal);letter-spacing:.1em}
+
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:52px;align-items:start}
+
+table{width:100%;border-collapse:collapse;font-size:14.5px}
+th,td{padding:9px 12px;text-align:right;border-bottom:1px solid var(--rule)}
+th:first-child,td:first-child{text-align:left}
+thead th{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--muted);font-weight:400}
+td.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+tr.hi td{color:var(--signal)}
+tr.good td{color:var(--answer)}
+
+.controls-list{list-style:none;padding:0;margin:0;counter-reset:c}
+.controls-list li{
+  display:grid;grid-template-columns:34px 1fr;gap:14px;
+  padding:13px 0;border-bottom:1px solid var(--rule);align-items:baseline;
+}
+.controls-list li:before{
+  counter-increment:c;content:counter(c,decimal-leading-zero);
+  font-family:var(--mono);font-size:11.5px;color:var(--signal);
+}
+.controls-list b{display:block;font-weight:600;font-size:15.5px;margin-bottom:2px}
+.controls-list span{font-size:14px;color:var(--muted)}
+.controls-list code{font-family:var(--mono);font-size:13px;color:#c6cbd4}
+
+figure{margin:0}
+figcaption{font-size:13.5px;color:var(--muted);margin-top:12px;max-width:56ch}
+
+.callout{
+  border:1px solid var(--rule);border-radius:3px;padding:22px 24px;
+  background:linear-gradient(180deg,rgba(79,209,197,.05),transparent);
+}
+.callout .big{font-family:var(--mono);font-size:40px;color:var(--answer);
+  font-variant-numeric:tabular-nums;line-height:1;margin-bottom:6px}
+
+.honest li{margin-bottom:13px;color:#d6d8dd;font-size:15.5px}
+.honest{padding-left:19px}
+
+footer{padding:62px 0 84px}
+.cite{
+  font-family:var(--mono);font-size:12.5px;background:var(--ink2);
+  border:1px solid var(--rule);border-radius:3px;padding:17px 19px;
+  overflow-x:auto;white-space:pre;color:#b9c0cc;line-height:1.65;
+}
+.foot-links{display:flex;flex-wrap:wrap;gap:26px;margin-bottom:34px;font-size:15px}
+
+@media (max-width:820px){
+  .grid2{grid-template-columns:1fr;gap:36px}
+  .cards{grid-template-columns:1fr}
+  section{padding:56px 0}
+}
+@media (prefers-reduced-motion:reduce){
+  *{transition-duration:.01ms !important;animation-duration:.01ms !important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="eyebrow">arXiv preprint &nbsp;·&nbsp; 2026 &nbsp;·&nbsp; cs.CL</div>
+    <h1>Verification<br>without <em>sufficiency</em></h1>
+    <p class="lede" style="margin-top:26px">
+      Per-chunk filtering fails on multi-hop RAG. Not because the models are weak,
+      but because no single chunk is a sufficient premise for the answer.
+    </p>
+    <div class="byline">Randhir Kumar &nbsp;·&nbsp; Independent Researcher</div>
+    <div class="links">
+      <a class="btn solid" href="paper.pdf">Read the paper</a>
+      <a class="btn" href="https://github.com/iamhero2709/verification-without-sufficiency">Code &amp; traces</a>
+      <a class="btn" href="https://arxiv.org/abs/XXXX.XXXXX">arXiv</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ SIGNATURE ============ -->
+<section class="stage" style="padding-top:56px">
+  <div class="wrap">
+    <div class="eyebrow" style="margin-bottom:16px">Where the verifier looks</div>
+    <p class="q" id="qtext">What government position was held by the woman who
+      portrayed Corliss Archer in <em>Kiss and Tell</em>?</p>
+    <div class="qmeta" id="qmeta">HotpotQA · bridge · 543 questions</div>
+
+    <div class="controls">
+      <div>
+        <span class="ctl-label" id="l1">Question type</span>
+        <div class="seg" role="group" aria-labelledby="l1">
+          <button data-type="bridge" aria-pressed="true">bridge</button>
+          <button data-type="comparison" aria-pressed="false">comparison</button>
+        </div>
+      </div>
+      <div>
+        <span class="ctl-label" id="l2">Verification signal</span>
+        <div class="seg" role="group" aria-labelledby="l2">
+          <button data-sig="emb" aria-pressed="true">embedding</button>
+          <button data-sig="ent" aria-pressed="false">entailment</button>
+          <button data-sig="str" aria-pressed="false">structural</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="cards">
+      <article class="card" id="cardA">
+        <span class="beam"></span><span class="glow"></span>
+        <div class="role"><span>Paragraph 1</span><span class="tag" id="tagA">named in the question</span></div>
+        <div class="title" id="titleA">Kiss and Tell (1945 film)</div>
+        <p class="snippet" id="snipA"><mark>Kiss and Tell</mark> is a 1945 American
+          comedy film in which <mark>Corliss Archer</mark> is played by Shirley Temple…</p>
+        <div class="readout"><span class="auc" id="aucA">0.927</span>
+          <span class="auc-note">AUC vs distractors</span></div>
+      </article>
+
+      <article class="card holds" id="cardB">
+        <span class="beam"></span><span class="glow"></span>
+        <div class="role"><span>Paragraph 2</span><span class="tag" id="tagB">holds the answer</span></div>
+        <div class="title" id="titleB">Shirley Temple</div>
+        <p class="snippet" id="snipB">Shirley Temple Black was an American actress
+          and diplomat who served as <mark>Chief of Protocol</mark> of the United States…</p>
+        <div class="readout"><span class="auc" id="aucB">0.796</span>
+          <span class="auc-note">AUC vs distractors</span></div>
+      </article>
+    </div>
+
+    <div class="verdict" id="verdict">
+      <strong>The signal is 0.131 more confident about the paragraph the question
+      already names.</strong> The answer is in the other one, and the question
+      never mentions it by name.
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE NUMBER ============ -->
+<section>
+  <div class="wrap grid2">
+    <div>
+      <div class="sec-head"><span class="sec-num">01</span><h2>One row explains the paper</h2></div>
+      <p>The same entailment model, the same hypothesis construction, the same
+        kind of hard distractors drawn from neighbouring Wikipedia articles.
+        The only thing that changes is whether one paragraph is enough to answer
+        the question.</p>
+      <div class="callout">
+        <div class="big">0.951 → 0.643</div>
+        <div style="font-size:14px;color:var(--muted)">entailment AUC, single-hop
+          SQuAD to multi-hop HotpotQA</div>
+      </div>
+    </div>
+    <figure>
+      <table>
+        <thead><tr><th>Signal</th><th>SQuAD<br><span style="font-weight:400">1-hop</span></th>
+          <th>HotpotQA</th><th>2Wiki</th><th>MuSiQue</th></tr></thead>
+        <tbody>
+          <tr><td>embedding cosine</td><td class="num">0.933</td><td class="num">0.887</td>
+            <td class="num">0.807</td><td class="num">0.762</td></tr>
+          <tr class="hi"><td>NLI entailment</td><td class="num">0.951</td><td class="num">0.643</td>
+            <td class="num">0.523</td><td class="num">0.560</td></tr>
+          <tr><td>HRR structural</td><td class="num">—</td><td class="num">0.620</td>
+            <td class="num">—</td><td class="num">—</td></tr>
+        </tbody>
+      </table>
+      <figcaption>Separating gold evidence from hard distractors, AUC. 500
+        questions per multi-hop dataset, 300 for SQuAD. Entailment works where a
+        single passage suffices and collapses where it does not.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ CONTROLS ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Seven things it isn't</h2></div>
+    <p style="margin-bottom:32px">Each control rules out one competing explanation.
+      Together they leave sufficiency as the account standing.</p>
+    <ol class="controls-list">
+      <li><div><b>Not one dataset</b><span>0.643, 0.523 and 0.560 on HotpotQA,
+        2WikiMultihopQA and MuSiQue</span></div></li>
+      <li><div><b>Not diffuse weakness</b><span>the deficit vanishes on comparison
+        questions, which name both entities: <code>+0.271 → +0.002</code></span></div></li>
+      <li><div><b>Not shallow</b><span>embedding AUC falls
+        <code>0.819 → 0.677</code> from two hops to four</span></div></li>
+      <li><div><b>Not premise length</b><span>longer premises score lower:
+        148 words → 0.540, 198 words → 0.025</span></div></li>
+      <li><div><b>Not the task</b><span>the identical pipeline reaches
+        <code>0.951</code> on single-hop SQuAD</span></div></li>
+      <li><div><b>Not the threshold</b><span>at the most permissive cutoff tested,
+        84% of gold paragraphs are already rejected</span></div></li>
+      <li><div><b>Not the retriever</b><span>the deficit holds for bge, e5 and gte:
+        <code>+0.116, +0.107, +0.150</code></span></div></li>
+    </ol>
+    <p style="margin-top:26px;font-size:14.5px;color:var(--muted)">
+      Also ruled out: NLI model scale (44M, 184M, 435M), the answer-matching
+      criterion (deficit moves by ≤ 0.007 across three definitions), and the
+      generation prompt (ordering unchanged).</p>
+  </div>
+</section>
+
+<!-- ============ REPAIR ============ -->
+<section>
+  <div class="wrap grid2">
+    <div>
+      <div class="sec-head"><span class="sec-num">03</span><h2>What repairs it</h2></div>
+      <p>Ask the verifier about the sub-question instead of the original query and
+        the task becomes tractable. Nothing else changes: same model, same
+        paragraphs, same labels.</p>
+      <p>Hop count then stops mattering. With the gold sub-question the AUC is
+        0.848, 0.849 and 0.804 at two, three and four hops, flat within its
+        intervals.</p>
+      <p style="font-size:14.5px;color:var(--muted)">Self-Ask and IRCoT already
+        produce these decompositions, for retrieval, and discard them before
+        verifying.</p>
+    </div>
+    <figure>
+      <svg viewBox="0 0 520 250" width="100%" role="img"
+           aria-label="AUC by how the hypothesis is built: original question 0.546, LLM question only 0.533, LLM anchored 0.637, gold sub-question 0.840">
+        <defs><linearGradient id="gA" x1="0" x2="1">
+          <stop offset="0" stop-color="#e8a33d" stop-opacity=".85"/>
+          <stop offset="1" stop-color="#e8a33d" stop-opacity=".45"/></linearGradient>
+          <linearGradient id="gB" x1="0" x2="1">
+          <stop offset="0" stop-color="#4fd1c5" stop-opacity=".9"/>
+          <stop offset="1" stop-color="#4fd1c5" stop-opacity=".5"/></linearGradient>
+        </defs>
+        <line x1="150" y1="10" x2="150" y2="212" stroke="#2b3546" stroke-dasharray="3 4"/>
+        <text x="150" y="232" fill="#7d8798" font-size="10" font-family="JetBrains Mono" text-anchor="middle">0.50</text>
+        <text x="500" y="232" fill="#7d8798" font-size="10" font-family="JetBrains Mono" text-anchor="end">0.90</text>
+
+        <g font-family="Instrument Sans" font-size="12.5" fill="#d6d8dd">
+          <text x="0" y="26">original question</text>
+          <text x="0" y="76">7B, question only</text>
+          <text x="0" y="126">7B, anchored</text>
+          <text x="0" y="176" fill="#4fd1c5">gold sub-question</text>
+        </g>
+        <g>
+          <rect x="150" y="14" width="40"  height="18" fill="url(#gA)" rx="1"/>
+          <rect x="150" y="64" width="29"  height="18" fill="url(#gA)" rx="1"/>
+          <rect x="150" y="114" width="120" height="18" fill="url(#gA)" rx="1"/>
+          <rect x="150" y="164" width="298" height="18" fill="url(#gB)" rx="1"/>
+        </g>
+        <g font-family="JetBrains Mono" font-size="12" fill="#eceae4">
+          <text x="198" y="28">0.546</text>
+          <text x="187" y="78">0.533</text>
+          <text x="278" y="128">0.637</text>
+          <text x="456" y="178" fill="#4fd1c5">0.840</text>
+        </g>
+      </svg>
+      <figcaption>MuSiQue, 500 questions, 9997 candidate paragraphs. Paired lift
+        of the gold sub-question over the original question: <b>+0.355</b>
+        [0.331, 0.382]. An off-the-shelf Qwen2.5-7B decomposer captures 31% of
+        that, and only when it can see a retrieved paragraph first.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ COST ============ -->
+<section>
+  <div class="wrap grid2">
+    <div>
+      <div class="sec-head"><span class="sec-num">04</span><h2>What it costs</h2></div>
+      <p>Across three datasets, three generator sizes and two prompts, per-chunk
+        gating is significantly worse than not filtering at all in every cell.</p>
+      <p>The penalty grows with generator capability. A stronger model is hurt
+        more by deleted evidence, because it could have used it.</p>
+    </div>
+    <figure>
+      <table>
+        <thead><tr><th>Qwen2.5, HotpotQA</th><th>0.5B</th><th>1.5B</th><th>3B</th></tr></thead>
+        <tbody>
+          <tr class="hi"><td>per-chunk gating vs no filter</td>
+            <td class="num">−4.6</td><td class="num">−14.2</td><td class="num">−19.4</td></tr>
+          <tr class="good"><td>oracle vs best deployable</td>
+            <td class="num">−0.6</td><td class="num">+7.2</td><td class="num">+10.6</td></tr>
+        </tbody>
+      </table>
+      <figcaption>Exact Match difference, 500 questions, paired exact McNemar with
+        Holm correction. On MuSiQue the oracle sits <b>+20.1</b> above the best
+        deployable selector at 1.5B and <b>+23.6</b> at 3B. No verifier we tested
+        collects any of it.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ HONEST ============ -->
+<section>
+  <div class="wrap">
+    <div class="sec-head"><span class="sec-num">05</span><h2>What didn't work</h2></div>
+    <p>These cost the same to produce as the positive results, and they are the
+      part most papers leave out.</p>
+    <ul class="honest">
+      <li><b>Holographic Reduced Representations</b> reach 0.620 AUC. Our extractor
+        binds 4 role-filler pairs out of 41.9 available; binding all of them drives
+        the recoverable signal to <code>k<sup>−1/2</sup> ≈ 0.15</code>. Squeezed
+        from both sides.</li>
+      <li><b>Our own conditional selector</b> recovers 7 to 15 points of gold recall
+        at 40% of the verification cost, and is significantly <em>worse</em> than
+        no filtering on MuSiQue (−6.6 EM, p = .023).</li>
+      <li><b>No deployable selector beats leaving retrieval alone</b>, on any
+        dataset. Only the oracle does.</li>
+      <li><b>An earlier version of this study</b> evaluated on ten questions and
+        reported 30–40% Exact Match at 0.5B. The 500-question measurement puts the
+        true value near 10%. The repository records what was decided when, and
+        does not pretend a pre-registration existed.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-links">
+      <a href="paper.pdf">Paper (PDF)</a>
+      <a href="https://arxiv.org/abs/XXXX.XXXXX">arXiv</a>
+      <a href="https://github.com/iamhero2709/verification-without-sufficiency">GitHub</a>
+      <a href="https://github.com/iamhero2709/verification-without-sufficiency/tree/main/traces">Per-question traces</a>
+    </div>
+    <div class="cite">@misc{kumar2026sufficiency,
+  title  = {Verification Without Sufficiency: Per-Chunk Filtering Fails
+            on Multi-Hop RAG, and Decomposition Repairs It},
+  author = {Randhir Kumar},
+  year   = {2026},
+  eprint = {XXXX.XXXXX},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL}
+}</div>
+    <p style="margin-top:30px;font-size:13.5px;color:var(--muted)">
+      Every number on this page is produced by a script reading the released
+      traces. The full pipeline cost about $24 of cloud compute and five hours of
+      wall clock.</p>
+  </div>
+</footer>
+
+<script>
+// Real measurements. HotpotQA, 543 bridge and 157 comparison questions.
+// [AUC on the question-named paragraph, AUC on the answer-bearing paragraph]
+const DATA = {
+  bridge: {
+    q: 'What government position was held by the woman who portrayed Corliss Archer in <em>Kiss and Tell</em>?',
+    meta: 'HotpotQA · bridge · 543 questions',
+    a: {title:'Kiss and Tell (1945 film)', tag:'named in the question',
+        snip:'<mark>Kiss and Tell</mark> is a 1945 American comedy film in which <mark>Corliss Archer</mark> is played by Shirley Temple…'},
+    b: {title:'Shirley Temple', tag:'holds the answer',
+        snip:'Shirley Temple Black was an American actress and diplomat who served as <mark>Chief of Protocol</mark> of the United States…'},
+    emb:[0.927,0.796], ent:[0.695,0.605], str:[0.696,0.560]
+  },
+  comparison: {
+    q: 'Which magazine was started first, <em>Arthur\u2019s Magazine</em> or <em>First for Women</em>?',
+    meta: 'HotpotQA · comparison · 157 questions',
+    a: {title:'Arthur\u2019s Magazine', tag:'named in the question',
+        snip:'<mark>Arthur\u2019s Magazine</mark> was an American literary periodical published in Philadelphia in the <mark>19th century</mark>…'},
+    b: {title:'First for Women', tag:'also named, holds the answer',
+        snip:'<mark>First for Women</mark> is a woman\u2019s magazine published by Bauer Media Group, launched in <mark>1989</mark>…'},
+    emb:[0.969,0.972], ent:[0.513,0.616], str:[0.688,0.603]
+  }
+};
+const NAME = {emb:'Embedding cosine', ent:'NLI entailment', str:'HRR structural'};
+
+let type = 'bridge', sig = 'emb';
+const $ = id => document.getElementById(id);
+
+// map an AUC in [0.5, 1.0] onto a visible glow strength
+const strength = v => Math.max(0, Math.min(1, (v - 0.5) / 0.48));
+
+function render(){
+  const d = DATA[type], vals = d[sig];
+  $('qtext').innerHTML = d.q;
+  $('qmeta').textContent = d.meta;
+  $('titleA').textContent = d.a.title; $('snipA').innerHTML = d.a.snip; $('tagA').textContent = d.a.tag;
+  $('titleB').textContent = d.b.title; $('snipB').innerHTML = d.b.snip; $('tagB').textContent = d.b.tag;
+  $('aucA').textContent = vals[0].toFixed(3);
+  $('aucB').textContent = vals[1].toFixed(3);
+
+  [['cardA',vals[0]],['cardB',vals[1]]].forEach(([id,v])=>{
+    const c = $(id), s = strength(v);
+    c.querySelector('.glow').style.opacity = s.toFixed(3);
+    c.querySelector('.beam').style.transform = 'scaleX(' + s.toFixed(3) + ')';
+  });
+
+  const gap = vals[0] - vals[1], v = $('verdict');
+  if (Math.abs(gap) < 0.03){
+    v.className = 'verdict even';
+    v.innerHTML = '<strong>Both paragraphs are named, and the gap closes to ' +
+      gap.toFixed(3) + '.</strong> Nothing about the model or the corpus changed. ' +
+      'Only the relationship between the question and the evidence did.';
+  } else if (gap > 0){
+    v.className = 'verdict';
+    v.innerHTML = '<strong>' + NAME[sig] + ' is ' + gap.toFixed(3) +
+      ' more confident about the paragraph the question already names.</strong> ' +
+      'The answer is in the other one, and the question never mentions it by name.';
+  } else {
+    v.className = 'verdict even';
+    v.innerHTML = '<strong>' + NAME[sig] + ' leans the other way here, by ' +
+      Math.abs(gap).toFixed(3) + '.</strong> Both paragraphs are named, so there ' +
+      'is no hidden second hop for the signal to miss.';
+  }
+}
+
+document.querySelectorAll('[data-type]').forEach(b => b.addEventListener('click', () => {
+  type = b.dataset.type;
+  document.querySelectorAll('[data-type]').forEach(x =>
+    x.setAttribute('aria-pressed', String(x === b)));
+  render();
+}));
+document.querySelectorAll('[data-sig]').forEach(b => b.addEventListener('click', () => {
+  sig = b.dataset.sig;
+  document.querySelectorAll('[data-sig]').forEach(x =>
+    x.setAttribute('aria-pressed', String(x === b)));
+  render();
+}));
+
+// settle the beams shortly after load so the movement is legible
+window.addEventListener('load', () => setTimeout(render, 220));
+render();
+</script>
+</body>
+</html>
