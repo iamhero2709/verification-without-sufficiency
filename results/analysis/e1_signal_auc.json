@@ -1,0 +1,21 @@
+{
+  "auc": {
+    "s_emb": 0.876482062780269,
+    "s_ent_slot": 0.6202401024983983,
+    "s_ent_oracle": 0.6407396540679051,
+    "s_ent_raw": 0.6010434336963484,
+    "s_ent_answer": 0.6253928251121076,
+    "s_str_chunk_raw": 0.6049342088404869,
+    "s_str_chunk_white": 0.6203005124919924,
+    "s_str_sent_raw": 0.5919718129404228,
+    "s_str_sent_white": 0.5951624599615631
+  },
+  "k": {
+    "k_chunk_mean": 3.990967741935484,
+    "k_chunk_p50": 4.0,
+    "k_chunk_p90": 4.0
+  },
+  "n_pairs": 6975,
+  "E2_oracle_ceiling": 0.6407396540679051,
+  "E2_gate": "NEGATIVE_RESULT_PAPER"
+}

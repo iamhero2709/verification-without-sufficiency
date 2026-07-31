@@ -1,0 +1,10 @@
+{
+  "n_questions": 300,
+  "model": "cross-encoder/nli-deberta-v3-base",
+  "AUC_single_chunk": 0.664,
+  "AUC_gold_pair_vs_other_pairs": 0.8813,
+  "lift": 0.2173,
+  "mean_entail_gold_pair": 0.5603,
+  "mean_entail_other_pair": 0.0654,
+  "mean_entail_gold_chunk": 0.1033
+}

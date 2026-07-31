@@ -1,0 +1,30 @@
+{
+  "hotpotqa": {
+    "n": 500,
+    "source": "reused eval split"
+  },
+  "2wiki": {
+    "n": 500,
+    "repo": "xanhho/2WikiMultihopQA",
+    "skipped": 0,
+    "errors": {},
+    "mean_paragraphs": 10.0,
+    "mean_gold": 2.476,
+    "hop_counts": {
+      "2": 500
+    }
+  },
+  "musique": {
+    "n": 500,
+    "repo": "dgslibisey/MuSiQue",
+    "skipped": 0,
+    "errors": {},
+    "mean_paragraphs": 19.994,
+    "mean_gold": 2.638,
+    "hop_counts": {
+      "2": 259,
+      "4": 78,
+      "3": 163
+    }
+  }
+}

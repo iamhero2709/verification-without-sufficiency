@@ -1,0 +1,11 @@
+{
+  "n_questions": 200,
+  "nli_model": "cross-encoder/nli-deberta-v3-base",
+  "mean_entail__gold+gold": 0.5398,
+  "mean_premise_words__gold+gold": 148.2,
+  "mean_entail__gold+distractor": 0.1267,
+  "mean_premise_words__gold+distractor": 172.1,
+  "mean_entail__distractor+distractor": 0.0248,
+  "mean_premise_words__distractor+distractor": 197.6,
+  "AUC_goldgold_vs_golddistractor": 0.8191
+}

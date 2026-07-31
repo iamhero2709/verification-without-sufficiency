@@ -1,0 +1,10 @@
+{
+  "questions": 700,
+  "gold_paragraphs_total": 1400,
+  "gold_that_contain_the_answer": 812,
+  "fraction_of_gold_bearing_the_answer": 0.58,
+  "questions_with_0_answer_bearing_gold": 43,
+  "questions_with_1_answer_bearing_gold": 502,
+  "questions_with_2plus_answer_bearing_gold": 155,
+  "yes_no_questions": 43
+}

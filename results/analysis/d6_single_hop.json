@@ -1,0 +1,14 @@
+{
+  "dataset": "SQuAD v1.1 validation, same-article distractors",
+  "n_questions": 300,
+  "n_pairs": 3000,
+  "nli_model": "cross-encoder/nli-deberta-v3-base",
+  "emb_model": "BAAI/bge-small-en-v1.5",
+  "AUC_s_emb": 0.9327,
+  "AUC_s_ent_slot": 0.9272,
+  "AUC_s_ent_oracle": 0.9512,
+  "mean_entail_gold": 0.6934,
+  "mean_entail_distractor": 0.0152,
+  "hotpotqa_single_chunk_for_comparison": 0.664,
+  "single_hop_lift_over_hotpotqa": 0.2872
+}

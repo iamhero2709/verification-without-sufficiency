@@ -1,0 +1,15 @@
+{
+  "n_questions": 500,
+  "n_pairs": 4982,
+  "pairs_with_both_gold": 422,
+  "AUC_pair_slot": 0.811,
+  "AUC_pair_oracle": 0.8479,
+  "perchunk_slot_reference": 0.62,
+  "perchunk_oracle_reference": 0.664,
+  "mean_slot_both_gold": 0.6141,
+  "mean_slot_one_gold": 0.2347,
+  "mean_slot_no_gold": 0.0859,
+  "slot_lift_over_perchunk": 0.191,
+  "argmax_pair_is_gold_pair": 0.444,
+  "argmax_pair_contains_a_gold": 0.922
+}

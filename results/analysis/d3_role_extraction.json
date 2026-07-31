@@ -1,0 +1,10 @@
+{
+  "paragraphs_examined": 400,
+  "k_current_extractor_mean": 3.98,
+  "k_current_extractor_max": 4,
+  "k_available_in_paragraph_mean": 41.88,
+  "k_available_in_paragraph_p90": 68.0,
+  "k_per_sentence_mean": 3.44,
+  "tokens_per_paragraph_mean": 114.4,
+  "content_discarded_fraction": 0.905
+}

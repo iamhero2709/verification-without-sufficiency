@@ -1,0 +1,48 @@
+{
+  "LLM, question only": {
+    "auc": 0.5329,
+    "lo": 0.5097,
+    "hi": 0.5566,
+    "fraction_of_ceiling": -0.056
+  },
+  "LLM, anchored on top-1 chunk": {
+    "auc": 0.637,
+    "lo": 0.6115,
+    "hi": 0.6615,
+    "fraction_of_ceiling": 0.391
+  },
+  "gold annotation": {
+    "auc": 0.8397,
+    "lo": 0.8236,
+    "hi": 0.8561,
+    "fraction_of_ceiling": 1.261
+  },
+  "anchored_minus_original_question": {
+    "delta": 0.0906,
+    "lo": 0.0656,
+    "hi": 0.1152
+  },
+  "2hop": {
+    "anchored": 0.7101,
+    "gold": 0.8479,
+    "n_q": 259
+  },
+  "3hop": {
+    "anchored": 0.5562,
+    "gold": 0.8485,
+    "n_q": 163
+  },
+  "4hop": {
+    "anchored": 0.5601,
+    "gold": 0.8036,
+    "n_q": 78
+  },
+  "anchor_gold_False": {
+    "anchored_auc": 0.5461,
+    "n_q": 111
+  },
+  "anchor_gold_True": {
+    "anchored_auc": 0.6611,
+    "n_q": 389
+  }
+}

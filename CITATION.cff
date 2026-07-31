@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+title: "Verification Without Sufficiency: Per-Chunk Filtering Fails on Multi-Hop RAG"
+message: "If you use this work, please cite the paper."
+type: software
+authors:
+  - family-names: Kumar
+    given-names: Randhir
+    email: randhir2709vns@gmail.com
+repository-code: "https://github.com/iamhero2709/verification-without-sufficiency"
+license: MIT
+version: 1.0.0
+date-released: "2026-08-01"
+preferred-citation:
+  type: article
+  title: "Verification Without Sufficiency: Per-Chunk Filtering Fails on Multi-Hop RAG, and Decomposition Repairs It"
+  authors:
+    - family-names: Kumar
+      given-names: Randhir
+  year: 2026
+  journal: "arXiv preprint"

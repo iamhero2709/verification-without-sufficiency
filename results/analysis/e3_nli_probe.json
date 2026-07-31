@@ -1,0 +1,14 @@
+{
+  "cross-encoder/nli-deberta-v3-xsmall": {
+    "prop_slot": 0.5675,
+    "prop_oracle": 0.5900000000000001
+  },
+  "cross-encoder/nli-deberta-v3-base": {
+    "prop_slot": 0.63234375,
+    "prop_oracle": 0.6681250000000001
+  },
+  "MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli": {
+    "prop_slot": 0.6059374999999999,
+    "prop_oracle": 0.5434375
+  }
+}

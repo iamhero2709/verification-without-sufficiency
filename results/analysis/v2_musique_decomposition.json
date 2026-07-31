@@ -1,0 +1,14 @@
+{
+  "n_pairs": 9997,
+  "n_positive": 500,
+  "AUC_original_question": 0.5459,
+  "AUC_decomposed_subquestion": 0.7792,
+  "AUC_decomposed_with_answer": 0.9355,
+  "lift_from_decomposition": 0.2333,
+  "AUC_original_2hop": 0.5695,
+  "AUC_decomposed_2hop": 0.7773,
+  "AUC_original_3hop": 0.5033,
+  "AUC_decomposed_3hop": 0.7843,
+  "AUC_original_4hop": 0.5583,
+  "AUC_decomposed_4hop": 0.7793
+}

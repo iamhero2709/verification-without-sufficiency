@@ -1,0 +1,41 @@
+{
+  "cross-encoder/nli-deberta-v3-xsmall": {
+    "id2label": {
+      "0": "contradiction",
+      "1": "entailment",
+      "2": "neutral"
+    },
+    "entailment_index_used": 1,
+    "index_is_correct": true,
+    "argmax_on_entailing_pair": "entailment",
+    "argmax_on_contradicting_pair": "contradiction",
+    "p_used[entailing] - p_used[contradicting]": 0.9703,
+    "VERDICT": "OK"
+  },
+  "cross-encoder/nli-deberta-v3-base": {
+    "id2label": {
+      "0": "contradiction",
+      "1": "entailment",
+      "2": "neutral"
+    },
+    "entailment_index_used": 1,
+    "index_is_correct": true,
+    "argmax_on_entailing_pair": "entailment",
+    "argmax_on_contradicting_pair": "contradiction",
+    "p_used[entailing] - p_used[contradicting]": 0.9542,
+    "VERDICT": "OK"
+  },
+  "MoritzLaurer/DeBERTa-v3-large-mnli-fever-anli-ling-wanli": {
+    "id2label": {
+      "0": "entailment",
+      "1": "neutral",
+      "2": "contradiction"
+    },
+    "entailment_index_used": 0,
+    "index_is_correct": true,
+    "argmax_on_entailing_pair": "entailment",
+    "argmax_on_contradicting_pair": "contradiction",
+    "p_used[entailing] - p_used[contradicting]": 0.991,
+    "VERDICT": "OK"
+  }
+}

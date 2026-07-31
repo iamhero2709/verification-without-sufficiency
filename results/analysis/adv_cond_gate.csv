@@ -1,0 +1,4 @@
+dataset,n,anchor_is_gold,both_gold_reachable,COND_recall,SET_recall,COND_both_gold,SET_both_gold,nli_calls_cond,nli_calls_set,recall_lift
+2wiki,500,0.968,0.862,0.6115,0.463,0.448,0.324,4.0,10.0,0.14850000000000002
+hotpotqa,500,0.92,0.844,0.755,0.683,0.532,0.444,3.988,9.964,0.07199999999999995
+musique,500,0.778,0.61,0.4345,0.35566666666666663,0.236,0.182,4.0,10.0,0.07883333333333337

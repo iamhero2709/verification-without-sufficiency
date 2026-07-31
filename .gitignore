@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+wandb/
+triver-dump/
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.bbl
+*.blg
+.DS_Store

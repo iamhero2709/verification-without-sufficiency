@@ -1,0 +1,8 @@
+{
+  "n_calib": 200,
+  "n_eval": 500,
+  "n_fillers": 7747,
+  "mean_cos_raw": 0.4875815335482359,
+  "mean_cos_whitened": -0.00012800454840164276,
+  "passes": true
+}
