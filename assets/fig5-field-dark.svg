@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 860 342" width="860" height="342" font-family="system-ui,-apple-system,Segoe UI,Roboto,sans-serif">
+<defs>
+<marker id="a8b949e" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#8b949e"/></marker>
+<marker id="ae8a33d" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#e8a33d"/></marker>
+<marker id="a4fd1c5" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 L8 4 L0 8 z" fill="#4fd1c5"/></marker>
+</defs>
+<text x="14" y="24" font-size="14" fill="#e6edf3" text-anchor="start" font-weight="600">The evidence field</text>
+<text x="14" y="43" font-size="10.5" fill="#8b949e" text-anchor="start" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">ten candidate paragraphs · brightness = class-mean AUC against distractors</text>
+<text x="160" y="92" font-size="11.5" fill="#e6edf3" text-anchor="end" font-weight="500">original question</text>
+<text x="160" y="108" font-size="9.5" fill="#8b949e" text-anchor="end" font-weight="400">the signal lands on the paragraph the question already names</text>
+<rect x="176" y="66" width="70" height="52" rx="2" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<rect x="176" y="66" width="70" height="52" rx="2" fill="#e8a33d" opacity="0.070"/>
+<rect x="254" y="66" width="70" height="52" rx="2" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<rect x="254" y="66" width="70" height="52" rx="2" fill="#e8a33d" opacity="0.070"/>
+<rect x="332" y="66" width="70" height="52" rx="2" fill="#161b22" stroke="#4fd1c5" stroke-width="1"/>
+<rect x="332" y="66" width="70" height="52" rx="2" fill="#e8a33d" opacity="0.909"/>
+<text x="367.0" y="90" font-size="11.5" fill="#0a0d14" text-anchor="middle" font-weight="500" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">0.927</text>
+<text x="367.0" y="108" font-size="8" fill="#0a0d14" text-anchor="middle" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">named in Q</text>
+<rect x="410" y="66" width="70" height="52" rx="2" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<rect x="410" y="66" width="70" height="52" rx="2" fill="#e8a33d" opacity="0.070"/>
+<rect x="488" y="66" width="70" height="52" rx="2" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<rect x="488" y="66" width="70" height="52" rx="2" fill="#e8a33d" opacity="0.070"/>
+<rect x="566" y="66" width="70" height="52" rx="2" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<rect x="566" y="66" width="70" height="52" rx="2" fill="#e8a33d" opacity="0.070"/>
+<rect x="644" y="66" width="70" height="52" rx="2" fill="#161b22" stroke="#4fd1c5" stroke-width="1"/>
+<rect x="644" y="66" width="70" height="52" rx="2" fill="#e8a33d" opacity="0.630"/>
+<text x="679.0" y="90" font-size="11.5" fill="#0a0d14" text-anchor="middle" font-weight="500" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">0.796</text>
+<text x="679.0" y="108" font-size="8" fill="#0a0d14" text-anchor="middle" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">holds answer</text>
+<rect x="722" y="66" width="70" height="52" rx="2" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<rect x="722" y="66" width="70" height="52" rx="2" fill="#e8a33d" opacity="0.070"/>
+<rect x="800" y="66" width="70" height="52" rx="2" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<rect x="800" y="66" width="70" height="52" rx="2" fill="#e8a33d" opacity="0.070"/>
+<rect x="878" y="66" width="70" height="52" rx="2" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<rect x="878" y="66" width="70" height="52" rx="2" fill="#e8a33d" opacity="0.070"/>
+<text x="160" y="180" font-size="11.5" fill="#e6edf3" text-anchor="end" font-weight="500">both entities named</text>
+<text x="160" y="196" font-size="9.5" fill="#8b949e" text-anchor="end" font-weight="400">comparison questions: the gap closes to 0.003</text>
+<rect x="176" y="154" width="70" height="52" rx="2" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<rect x="176" y="154" width="70" height="52" rx="2" fill="#e8a33d" opacity="0.070"/>
+<rect x="254" y="154" width="70" height="52" rx="2" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<rect x="254" y="154" width="70" height="52" rx="2" fill="#e8a33d" opacity="0.070"/>
+<rect x="332" y="154" width="70" height="52" rx="2" fill="#161b22" stroke="#4fd1c5" stroke-width="1"/>
+<rect x="332" y="154" width="70" height="52" rx="2" fill="#e8a33d" opacity="0.998"/>
+<text x="367.0" y="178" font-size="11.5" fill="#0a0d14" text-anchor="middle" font-weight="500" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">0.969</text>
+<text x="367.0" y="196" font-size="8" fill="#0a0d14" text-anchor="middle" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">named</text>
+<rect x="410" y="154" width="70" height="52" rx="2" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<rect x="410" y="154" width="70" height="52" rx="2" fill="#e8a33d" opacity="0.070"/>
+<rect x="488" y="154" width="70" height="52" rx="2" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<rect x="488" y="154" width="70" height="52" rx="2" fill="#e8a33d" opacity="0.070"/>
+<rect x="566" y="154" width="70" height="52" rx="2" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<rect x="566" y="154" width="70" height="52" rx="2" fill="#e8a33d" opacity="0.070"/>
+<rect x="644" y="154" width="70" height="52" rx="2" fill="#161b22" stroke="#4fd1c5" stroke-width="1"/>
+<rect x="644" y="154" width="70" height="52" rx="2" fill="#e8a33d" opacity="1.000"/>
+<text x="679.0" y="178" font-size="11.5" fill="#0a0d14" text-anchor="middle" font-weight="500" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">0.972</text>
+<text x="679.0" y="196" font-size="8" fill="#0a0d14" text-anchor="middle" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">named, holds answer</text>
+<rect x="722" y="154" width="70" height="52" rx="2" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<rect x="722" y="154" width="70" height="52" rx="2" fill="#e8a33d" opacity="0.070"/>
+<rect x="800" y="154" width="70" height="52" rx="2" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<rect x="800" y="154" width="70" height="52" rx="2" fill="#e8a33d" opacity="0.070"/>
+<rect x="878" y="154" width="70" height="52" rx="2" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<rect x="878" y="154" width="70" height="52" rx="2" fill="#e8a33d" opacity="0.070"/>
+<text x="160" y="268" font-size="11.5" fill="#e6edf3" text-anchor="end" font-weight="500">decomposed sub-question</text>
+<text x="160" y="284" font-size="9.5" fill="#8b949e" text-anchor="end" font-weight="400">asked about the right hop, the light moves to the answer</text>
+<rect x="176" y="242" width="70" height="52" rx="2" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<rect x="176" y="242" width="70" height="52" rx="2" fill="#e8a33d" opacity="0.070"/>
+<rect x="254" y="242" width="70" height="52" rx="2" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<rect x="254" y="242" width="70" height="52" rx="2" fill="#e8a33d" opacity="0.070"/>
+<rect x="332" y="242" width="70" height="52" rx="2" fill="#161b22" stroke="#4fd1c5" stroke-width="1"/>
+<rect x="332" y="242" width="70" height="52" rx="2" fill="#e8a33d" opacity="0.098"/>
+<text x="367.0" y="266" font-size="11.5" fill="#e6edf3" text-anchor="middle" font-weight="500" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">0.546</text>
+<text x="367.0" y="284" font-size="8" fill="#e6edf3" text-anchor="middle" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">first hop</text>
+<rect x="410" y="242" width="70" height="52" rx="2" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<rect x="410" y="242" width="70" height="52" rx="2" fill="#e8a33d" opacity="0.070"/>
+<rect x="488" y="242" width="70" height="52" rx="2" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<rect x="488" y="242" width="70" height="52" rx="2" fill="#e8a33d" opacity="0.070"/>
+<rect x="566" y="242" width="70" height="52" rx="2" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<rect x="566" y="242" width="70" height="52" rx="2" fill="#e8a33d" opacity="0.070"/>
+<rect x="644" y="242" width="70" height="52" rx="2" fill="#161b22" stroke="#4fd1c5" stroke-width="1"/>
+<rect x="644" y="242" width="70" height="52" rx="2" fill="#e8a33d" opacity="0.723"/>
+<text x="679.0" y="266" font-size="11.5" fill="#0a0d14" text-anchor="middle" font-weight="500" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">0.840</text>
+<text x="679.0" y="284" font-size="8" fill="#0a0d14" text-anchor="middle" font-weight="400" font-family="ui-monospace,SFMono-Regular,Menlo,monospace">holds answer</text>
+<rect x="722" y="242" width="70" height="52" rx="2" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<rect x="722" y="242" width="70" height="52" rx="2" fill="#e8a33d" opacity="0.070"/>
+<rect x="800" y="242" width="70" height="52" rx="2" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<rect x="800" y="242" width="70" height="52" rx="2" fill="#e8a33d" opacity="0.070"/>
+<rect x="878" y="242" width="70" height="52" rx="2" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+<rect x="878" y="242" width="70" height="52" rx="2" fill="#e8a33d" opacity="0.070"/>
+<line x1="14" y1="316" x2="846" y2="316" stroke="#30363d"/>
+<text x="14" y="332" font-size="10.5" fill="#8b949e" text-anchor="start" font-weight="400">Explore this interactively on the project page.</text>
+</svg>
