@@ -9,7 +9,12 @@
 [![Project page](https://img.shields.io/badge/project_page-live-ffb545?style=flat-square&logo=github)](https://iamhero2709.github.io/verification-without-sufficiency/)
 [![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE)
 
-Randhir Kumar · Independent Researcher
+**Randhir Kumar** · Independent Researcher
+
+[![Email](https://img.shields.io/badge/email-randhir2709vns-222b3d?style=flat-square)](mailto:randhir2709vns@gmail.com)
+[![LinkedIn](https://img.shields.io/badge/linkedin-randhir--kumar-0a66c2?style=flat-square)](https://www.linkedin.com/in/randhir-kumar-861573301)
+[![X](https://img.shields.io/badge/x-%40randhir302-000000?style=flat-square)](https://x.com/randhir302)
+[![Hugging Face](https://img.shields.io/badge/hugging%20face-randhir302-ffb545?style=flat-square)](https://huggingface.co/randhir302)
 
 ### [→ Explore the interactive project page](https://iamhero2709.github.io/verification-without-sufficiency/)
 
@@ -133,6 +138,44 @@ Plus: NLI model scale (44M / 184M / 435M), answer-matching criterion (deficit
 moves by ≤ 0.007 across three definitions), and generation prompt (ordering
 unchanged).
 
+## Every experiment
+
+Fifteen runs, $24, five hours. Two are gates: if the number came back wrong, the
+expensive stages were cancelled. Each writes per-question traces to `results/`.
+
+| | Experiment | Question it asked | Result | Cost |
+|:--|:--|:--|--:|--:|
+| **E1** | Signal separation | how well does each signal separate gold from distractors? | `.887 / .643 / .620` | $1.0 |
+| **E2** ⛔ | Oracle ceiling | can entailment work with the gold answer supplied? | `0.641` | $0.3 |
+| **E3** | NLI model scale | is the 44M cross-encoder simply too small? | `.590 / .668 / .543` | $0.3 |
+| **D1** | Label mapping | are we reading the entailment logit, or another class? | all verified | $0.1 |
+| **D2** | Evidence split | does the failure have a direction? | `+0.131` deficit | free |
+| **D3** | HRR extraction | why does the structural signal fail? | 4 of 41.9 pairs | free |
+| **D4** | Question type | does the deficit survive when both entities are named? | `+.271 → +.002` | $0.1 |
+| **D5** | Set-level entailment | does supplying both hops repair the signal? | `.664 → .881` | $0.6 |
+| **D6** | Single-hop control | does entailment verification work at all at this scale? | `0.951` | $0.4 |
+| **D7** | Length control | is the set-level gain just longer premises? | `.540 / .127 / .025` | $0.2 |
+| **E5** | Hop scaling | does the deficit deepen with more hops? | `.819 → .677` | $1.5 |
+| **E6** | Threshold sweep | would a better cutoff rescue per-chunk gating? | 84% gold rejected | free |
+| **E7** | Retriever generality | is the bias an artefact of bge-small? | `+.116/.107/.150` | $0.2 |
+| **E8** | End to end | what does gating cost in answer quality? | `−13.4 EM, p<.001` | $10 |
+| **E9** ⛔ | Decomposition | does the sub-question repair verification? | `.546 → .840` | $1.3 |
+
+⛔ = gate. [Explore them interactively](https://iamhero2709.github.io/verification-without-sufficiency/#experiments),
+with the method, verdict and command for each.
+
+### The two gates
+
+**E2** asked whether entailment can work *at all* when the hypothesis contains
+the gold answer. A ceiling of 0.641 means no amount of hypothesis engineering
+helps, because that is what hypothesis engineering approximates. It cost fifteen
+minutes and thirty cents, and it cancelled roughly $15 of generation runs that
+would have confirmed the same thing slowly.
+
+**E9** asked whether the decomposition result survives without gold annotations.
+An off-the-shelf Qwen2.5-7B decomposer reaches 31% of the ceiling, which turned a
+diagnostic into a direction.
+
 ## Quick start
 
 ```bash
@@ -145,8 +188,23 @@ token F1 computed as binary, and entailment hypotheses phrased as statements
 about the passage rather than object-level claims.
 
 To reproduce everything, see [REPRODUCE.md](REPRODUCE.md). Requires a Modal
-account and about $24 of credit; the full pipeline is roughly five hours of
-wall clock, most of it unattended.
+account and about $24 of credit; the full pipeline is roughly five hours of wall
+clock, most of it unattended.
+
+```bash
+modal run modal/modal_research.py  --stage gate      # E1-E3, gate 1     20 min  $1.0
+modal run modal/modal_diagnose.py                    # D1-D3              5 min  $0.3
+modal run modal/modal_diagnose2.py                   # D4-D5             20 min  $1.5
+modal run modal/modal_d6.py                          # D6-D7             10 min  $0.6
+modal run modal/modal_setlevel.py  --stage pairs     # gate 2             4 min  $0.2
+modal run modal/modal_advanced.py  --stage all       # E5-E8             55 min  $8.0
+modal run modal/modal_v2.py        --stage all       # sizes, prompts    30 min  $8.0
+modal run modal/modal_llmdecomp.py --stage decompose # E9                25 min  $1.3
+modal run modal/modal_stats.py     --stage all       # intervals, tests  12 min  $1.0
+```
+
+Each stage is idempotent, so an interrupted run resumes. Everything writes to a
+Modal volume; `modal_package.py` archives it into one file for download.
 
 ## Layout
 
@@ -220,6 +278,18 @@ python scripts/make_readme_figures.py     # writes assets/*.svg, 5 figures x 2 t
 
 Light and dark variants come from one spec, so they cannot drift apart. Every
 number in them is copied from `results/analysis/`.
+
+## Links
+
+| | |
+|:--|:--|
+| Project page | <https://iamhero2709.github.io/verification-without-sufficiency/> |
+| Paper (PDF) | [paper/final_paper.pdf](paper/final_paper.pdf) |
+| arXiv | <https://arxiv.org/abs/XXXX.XXXXX> |
+| Per-question traces | [traces/](traces/) |
+| Analysis CSVs | [results/analysis/](results/analysis/) |
+| How this was run | [REPRODUCE.md](REPRODUCE.md) · [ANALYSIS_NOTES.md](ANALYSIS_NOTES.md) |
+| Author | [LinkedIn](https://www.linkedin.com/in/randhir-kumar-861573301) · [X](https://x.com/randhir302) · [Hugging Face](https://huggingface.co/randhir302) · [GitHub](https://github.com/iamhero2709) |
 
 ## Citing
 
