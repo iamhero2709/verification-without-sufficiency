@@ -6,9 +6,19 @@ authors:
   - family-names: Kumar
     given-names: Randhir
     email: randhir2709vns@gmail.com
-    # orcid: "https://orcid.org/0000-0000-0000-0000"   # <- fill this in
+    orcid: "https://orcid.org/0009-0001-5198-0411"
 repository-code: "https://github.com/iamhero2709/verification-without-sufficiency"
 url: "https://iamhero2709.github.io/verification-without-sufficiency/"
+abstract: >-
+  Code, data splits, per-question traces and analysis scripts for a study of why
+  per-chunk verification fails on multi-hop retrieval-augmented generation.
+  Per-chunk scoring assumes each chunk is a sufficient premise for the answer;
+  multi-hop questions are built so that none is, and the paragraph carrying the
+  answer is the one the question does not name. Entailment scoring reaches 0.951
+  AUC on single-hop SQuAD and 0.643, 0.523 and 0.560 on HotpotQA,
+  2WikiMultihopQA and MuSiQue. Conditioning the hypothesis on the decomposed
+  sub-question instead of the original query lifts entailment on a later hop
+  from 0.546, which is chance, to 0.840.
 license: MIT
 version: 1.0.0
 date-released: "2026-08-01"
@@ -19,11 +29,11 @@ keywords:
   - evidence-sufficiency
   - negative-results
 identifiers:
-  - type: other
-    value: "arXiv:2608.00585"
-    description: "arXiv preprint"
+  - type: url
+    value: "https://arxiv.org/abs/2608.00585"
+    description: "arXiv preprint 2608.00585"
   # - type: doi
-  #   value: "10.5281/zenodo.XXXXXXX"        # <- add after cutting the Zenodo release
+  #   value: "10.5281/zenodo.XXXXXXX"        # <- uncomment after the Zenodo release
   #   description: "Archived code and traces"
 preferred-citation:
   type: article
@@ -32,9 +42,7 @@ preferred-citation:
     - family-names: Kumar
       given-names: Randhir
       email: randhir2709vns@gmail.com
+      orcid: "https://orcid.org/0009-0001-5198-0411"
   year: 2026
   journal: "arXiv preprint arXiv:2608.00585"
   url: "https://arxiv.org/abs/2608.00585"
-  identifiers:
-    - type: other
-      value: "arXiv:2608.00585"

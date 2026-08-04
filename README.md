@@ -16,6 +16,7 @@
 [![X](https://img.shields.io/badge/x-%40randhir302-000000?style=flat-square)](https://x.com/randhir302)
 [![Hugging Face](https://img.shields.io/badge/hugging%20face-randhir302-ffb545?style=flat-square)](https://huggingface.co/randhir302)
 [![arXiv author](https://img.shields.io/badge/arXiv-kumar__r__8-222b3d?style=flat-square)](https://arxiv.org/a/kumar_r_8)
+[![ORCID](https://img.shields.io/badge/ORCID-0009--0001--5198--0411-a6ce39?style=flat-square)](https://orcid.org/0009-0001-5198-0411)
 
 ### [→ Explore the interactive project page](https://iamhero2709.github.io/verification-without-sufficiency/)
 
@@ -291,7 +292,7 @@ number in them is copied from `results/analysis/`.
 | Per-question traces | [traces/](traces/) |
 | Analysis CSVs | [results/analysis/](results/analysis/) |
 | How this was run | [REPRODUCE.md](REPRODUCE.md) · [ANALYSIS_NOTES.md](ANALYSIS_NOTES.md) |
-| Author | [LinkedIn](https://www.linkedin.com/in/randhir-kumar-861573301) · [X](https://x.com/randhir302) · [Hugging Face](https://huggingface.co/randhir302) · [GitHub](https://github.com/iamhero2709) · [arXiv](https://arxiv.org/a/kumar_r_8) |
+| Author | [LinkedIn](https://www.linkedin.com/in/randhir-kumar-861573301) · [X](https://x.com/randhir302) · [Hugging Face](https://huggingface.co/randhir302) · [GitHub](https://github.com/iamhero2709) · [arXiv](https://arxiv.org/a/kumar_r_8) · [ORCID](https://orcid.org/0009-0001-5198-0411) |
 
 ## Citing
 
