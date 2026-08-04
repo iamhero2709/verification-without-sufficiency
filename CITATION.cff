@@ -6,15 +6,35 @@ authors:
   - family-names: Kumar
     given-names: Randhir
     email: randhir2709vns@gmail.com
+    # orcid: "https://orcid.org/0000-0000-0000-0000"   # <- fill this in
 repository-code: "https://github.com/iamhero2709/verification-without-sufficiency"
+url: "https://iamhero2709.github.io/verification-without-sufficiency/"
 license: MIT
 version: 1.0.0
 date-released: "2026-08-01"
+keywords:
+  - retrieval-augmented-generation
+  - multi-hop-question-answering
+  - natural-language-inference
+  - evidence-sufficiency
+  - negative-results
+identifiers:
+  - type: other
+    value: "arXiv:2608.00585"
+    description: "arXiv preprint"
+  # - type: doi
+  #   value: "10.5281/zenodo.XXXXXXX"        # <- add after cutting the Zenodo release
+  #   description: "Archived code and traces"
 preferred-citation:
   type: article
   title: "Verification Without Sufficiency: Per-Chunk Filtering Fails on Multi-Hop RAG, and Decomposition Repairs It"
   authors:
     - family-names: Kumar
       given-names: Randhir
+      email: randhir2709vns@gmail.com
   year: 2026
-  journal: "arXiv preprint"
+  journal: "arXiv preprint arXiv:2608.00585"
+  url: "https://arxiv.org/abs/2608.00585"
+  identifiers:
+    - type: other
+      value: "arXiv:2608.00585"

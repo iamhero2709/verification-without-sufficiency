@@ -5,7 +5,7 @@
 **Per-chunk filtering fails on multi-hop RAG, and decomposition repairs it**
 
 [![Paper](https://img.shields.io/badge/paper-PDF-1a2130?style=flat-square)](paper/final_paper.pdf)
-[![arXiv](https://img.shields.io/badge/arXiv-XXXX.XXXXX-b31b1b?style=flat-square)](https://arxiv.org/abs/XXXX.XXXXX)
+[![arXiv](https://img.shields.io/badge/arXiv-2608.00585-b31b1b?style=for-the-badge&labelColor=0a0d14)](https://arxiv.org/abs/2608.00585)
 [![Project page](https://img.shields.io/badge/project_page-live-ffb545?style=flat-square&logo=github)](https://iamhero2709.github.io/verification-without-sufficiency/)
 [![License](https://img.shields.io/badge/license-MIT-blue?style=flat-square)](LICENSE)
 
@@ -15,6 +15,7 @@
 [![LinkedIn](https://img.shields.io/badge/linkedin-randhir--kumar-0a66c2?style=flat-square)](https://www.linkedin.com/in/randhir-kumar-861573301)
 [![X](https://img.shields.io/badge/x-%40randhir302-000000?style=flat-square)](https://x.com/randhir302)
 [![Hugging Face](https://img.shields.io/badge/hugging%20face-randhir302-ffb545?style=flat-square)](https://huggingface.co/randhir302)
+[![arXiv author](https://img.shields.io/badge/arXiv-kumar__r__8-222b3d?style=flat-square)](https://arxiv.org/a/kumar_r_8)
 
 ### [→ Explore the interactive project page](https://iamhero2709.github.io/verification-without-sufficiency/)
 
@@ -285,11 +286,12 @@ number in them is copied from `results/analysis/`.
 |:--|:--|
 | Project page | <https://iamhero2709.github.io/verification-without-sufficiency/> |
 | Paper (PDF) | [paper/final_paper.pdf](paper/final_paper.pdf) |
-| arXiv | <https://arxiv.org/abs/XXXX.XXXXX> |
+| arXiv | <https://arxiv.org/abs/2608.00585> |
+| Hugging Face paper | <https://huggingface.co/papers/2608.00585> |
 | Per-question traces | [traces/](traces/) |
 | Analysis CSVs | [results/analysis/](results/analysis/) |
 | How this was run | [REPRODUCE.md](REPRODUCE.md) · [ANALYSIS_NOTES.md](ANALYSIS_NOTES.md) |
-| Author | [LinkedIn](https://www.linkedin.com/in/randhir-kumar-861573301) · [X](https://x.com/randhir302) · [Hugging Face](https://huggingface.co/randhir302) · [GitHub](https://github.com/iamhero2709) |
+| Author | [LinkedIn](https://www.linkedin.com/in/randhir-kumar-861573301) · [X](https://x.com/randhir302) · [Hugging Face](https://huggingface.co/randhir302) · [GitHub](https://github.com/iamhero2709) · [arXiv](https://arxiv.org/a/kumar_r_8) |
 
 ## Citing
 
@@ -299,7 +301,7 @@ number in them is copied from `results/analysis/`.
                    on Multi-Hop RAG, and Decomposition Repairs It},
   author        = {Randhir Kumar},
   year          = {2026},
-  eprint        = {XXXX.XXXXX},
+  eprint        = {2608.00585},
   archivePrefix = {arXiv},
   primaryClass  = {cs.CL}
 }
